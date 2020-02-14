@@ -17,3 +17,4 @@ then
   echo "export BACKUP_SERVER='$server_addr'" >> ~/.bash_aliases
 fi
 
+echo "Done, exit"
