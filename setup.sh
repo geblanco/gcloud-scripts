@@ -9,8 +9,7 @@ read use_backup
 echo ""
 if [[ $use_backup =~ ^[Yy]$ ]]
 then
-  echo "Input the server address to use as backup server (format:
-  <user>@<server_addr>): "
+  echo "Input the server address to use as backup server (format: <user>@<server_addr>): "
   read server_addr
   echo ""
   ssh-copy-id $server_addr
