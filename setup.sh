@@ -15,6 +15,10 @@ then
   ssh-copy-id $server_addr
 
   echo "export BACKUP_SERVER='$server_addr'" >> ~/.bash_aliases
+  echo "Fill the rest of server data with your data (~/.server_data)"
+  echo "export BACKUP_SERVER='$server_addr'" >> ~/.server_data
+  echo "export TO_BACKUP_DIR=<local_backup_dir>" >> ~/.server_data
+  echo "export REMOTE_BACKUP_DIR=<remote_backup_dir>" >> ~/.server_data
 fi
 
 echo "Done, exit"
