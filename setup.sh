@@ -14,6 +14,6 @@ then
   echo ""
   ssh-copy-id $server_addr
 
-  echo "alias BACKUP_SERVER='$server_addr'" >> ~/.bash_aliases
+  echo "export BACKUP_SERVER='$server_addr'" >> ~/.bash_aliases
 fi
 
