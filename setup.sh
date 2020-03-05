@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update && sudo apt install wget git tree unzip -y
+sudo apt update && sudo apt install wget git tree unzip jq -y
 sudo chown -R $USER ~/.config
 ssh-keygen -t rsa -b 4096 -C "gcp-$(hostname)"
 
