@@ -21,13 +21,15 @@ then
   echo "export REMOTE_BACKUP_DIR=<remote_backup_dir>" >> ~/.server_data
 fi
 
-sudo apt update
-sudo apt install snapd
-sudo snap install jsonnet
-
 pip3 install 'dvc[all]'
 echo "alias dvc='python3 -m dvc'" >> ~/.bash_aliases
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 20
+
+cd ~
+git clone https://github.com/google/jsonnet
+cd jsonnet/
+make 
+sudo ln -s `pwd`/jsonnet /usr/bin/jsonnet
 
 echo "Done, exit"
