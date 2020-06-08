@@ -1,0 +1,20 @@
+export BACKUP_SERVER=''
+export HOP_SERVER=''
+export TO_BACKUP_DIR="experiments-folder"
+export REMOTE_BACKUP_DIR="experiments-backup"
+export BACKUP_EXCLUDE='checkpoint-*'
+
+backup(){
+  proxy_data=()
+  if [[ ! -z "${HOP_SERVER}" ]]; then
+    proxy_data+=("-e" "ssh -p 22 -A ${HOP_SERVER} ssh")
+  fi
+  exclude='--exclude='
+  if [[ ! -z "${BACKUP_EXCLUDE}" ]]; then
+    exclude+="${BACKUP_EXCLUDE}"
+  else
+    exclude=""
+  fi
+    
+  rsync "${proxy_data[@]}" -avrzP "${exclude}" "${TO_BACKUP_DIR}" "${BACKUP_SERVER}:/${REMOTE_BACKUP_DIR}"
+}
