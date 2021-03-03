@@ -4,6 +4,17 @@ sudo apt update && sudo apt install wget git tree unzip jq -y
 sudo chown -R $USER ~/.config
 ssh-keygen -t rsa -b 4096 -C "gcp-$(hostname)"
 
+copy_key(){
+  local server=$1;
+  echo "Copy key to server?"
+  read cpy
+  echo ""
+  if [[ $cpy =~ ^[Yy]$ ]]
+  then
+    ssh-copy-id $server
+  fi
+}
+
 echo "Use backup server (good practice)? [y/n] "
 read use_backup
 echo ""
@@ -12,7 +23,7 @@ then
   echo "Input the server address to use as backup server (format: <user>@<server_addr>): "
   read server_addr
   echo ""
-  ssh-copy-id $server_addr
+  copy_key $server_addr
 
   echo "Use hop server? [y/n]"
   read use_hop_server
@@ -22,7 +33,7 @@ then
     echo "Input the server address to use as hop server (format: <user>@<server_addr>): "
     read hop_server_addr
     echo ""
-    ssh-copy-id $hop_server_addr
+    copy_key $hop_server_addr
     echo "export HOP_SERVER='$hop_server_addr'" >> ~/.server_data
   fi
   echo "export BACKUP_SERVER='$server_addr'" >> ~/.bash_aliases
