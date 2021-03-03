@@ -3,10 +3,11 @@
 sudo apt update && sudo apt install wget git tree unzip jq -y
 sudo chown -R $USER ~/.config
 ssh-keygen -t rsa -b 4096 -C "gcp-$(hostname)"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 copy_key(){
   local server=$1;
-  echo "Copy key to server?"
+  echo "Copy key to server? [y/n]"
   read cpy
   echo ""
   if [[ $cpy =~ ^[Yy]$ ]]
@@ -42,7 +43,7 @@ then
   echo "export TO_BACKUP_DIR=<local_backup_dir>" >> ~/.server_data
   echo "export REMOTE_BACKUP_DIR=<remote_backup_dir>" >> ~/.server_data
   echo "" >> ~/.server_data
-  cat ./server_data >> ~/.server_data
+  cat "${DIR}/server_data" >> ~/.server_data
 fi
 
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10
