@@ -1,8 +1,8 @@
-export BACKUP_SERVER=''
-export HOP_SERVER=''
-export TO_BACKUP_DIR="experiments-folder"
-export REMOTE_BACKUP_DIR="experiments-backup"
-export BACKUP_EXCLUDE='checkpoint-*'
+# export BACKUP_SERVER=''
+# export HOP_SERVER=''
+# export TO_BACKUP_DIR="experiments-folder"
+# export REMOTE_BACKUP_DIR="experiments-backup"
+# export BACKUP_EXCLUDE='checkpoint-*'
 
 backup(){
   proxy_data=()
